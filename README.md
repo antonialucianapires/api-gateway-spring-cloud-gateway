@@ -3,6 +3,27 @@
 ## Descrição
 Este projeto é uma implementação de exemplo de um API Gateway utilizando o Spring Cloud Gateway. O objetivo de um API Gateway é funcionar como um ponto centralizador de requisições para diversos microserviços, facilitando o gerenciamento de rotas, autenticação, conversão de dados, controle de taxa (throttling e rate limiting), entre outros. Este repositório serve como uma referência de estudo sobre como configurar e utilizar o Spring Cloud Gateway em um contexto de microserviços.
 
+```mermaid
+graph LR
+    client[Client] -->|Request| gateway[API Gateway]
+
+    subgraph backend[Backend Services]
+        service1[Products Service]
+        service2[Reviews Service]
+        service3[Another Service]
+    end
+
+    gateway -->|Route to /products/**| service1
+    gateway -->|Route to /reviews/**| service2
+    gateway -->|Route to /another/**| service3
+
+    style client fill:#f9f,stroke:#333,stroke-width:2px
+    style gateway fill:#ccf,stroke:#333,stroke-width:2px
+    style service1 fill:#cfc,stroke:#333,stroke-width:2px
+    style service2 fill:#cfc,stroke:#333,stroke-width:2px
+    style service3 fill:#cfc,stroke:#333,stroke-width:2px
+```
+
 #### Tecnologias 
 - **Spring Boot**: Framework para desenvolvimento de aplicações Java com microserviços.
 - **Spring Cloud Gateway**: Gateway de API que fornece uma maneira simples, eficaz e escalável de rotear e filtrar requisições.
