@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: apigateway
+  cloud:
+    gateway:
+      routes:
+        - id: products
+          uri: http://localhost:8080
+          predicates:
+            - Path=/products/**
+        - id: reviews
+          uri: http://localhost:8082
+          predicates:
+            - Path=/reviews/**
+server:
+  port: 8083
